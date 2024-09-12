@@ -21,8 +21,10 @@ class BankAccount:
     def get_balance(self):
         return self.balance
 
-# Example usage
-account = BankAccount("123456", "Rohit Gupta", 2000)
-account.deposit(1500)
-account.withdraw(200)
-print(f"Final balance: {account.get_balance()}")
+    def transfer(self, target_account, amount):
+        if 0 < amount <= self.balance:
+            self.balance -= amount
+            target_account.balance += amount
+            print(f"Transferred {amount} to account {target_account.account_number}.")
+        else:
+            print("Insufficient funds or invalid amount.")
